@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHHUTNA</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #f4f4f4;
+      color: #333;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #1a73e8;
+    }
+
+    h4 {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+      text-align: left;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #1a73e8;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1558b0;
+    }
+
+    p {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .rotating-image {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 15px;
+      animation: rotate 10s linear infinite;
+    }
+
+    .rotating-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10%);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      button {
+        font-size: 12px;
+      }
+
+      p {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="rotating-image">
+    <img src="hii.png" alt="Profile Picture">
+  </div>
+  <h1>Hringnun Calculator ni taps mai ma</h1>
+  <h4>Chakna vangin kum 80 dam thleng turah lo in ngai ta ang ila,<p>tuna I kum hman mek kha han chhu lut la,<p> I hun la neih zat han chhut teh le.</h4>
+  <div class="container">
+    <label for="age">I kum zat chhu rawh le:</label>
+    <input type="number" id="age" placeholder="i kum zat number in chhu la">
+    <button onclick="calculateLife()">Calculate</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function calculateLife() {
+      const age = parseInt(document.getElementById("age").value);
+      const lifespan = 80;
+      const totalDays = lifespan * 365; // Assuming 365 days per year
+      const daysLived = age * 365;
+      const daysRemaining = totalDays - daysLived;
+      const yearsRemaining = Math.floor(daysRemaining / 365);
+      const weeksRemaining = Math.floor(daysRemaining / 7);
+
+      if (!isNaN(age) && age >= 0 && age <= lifespan) {
+        document.getElementById("result").innerHTML = 
+          ` <p> <br>Kum 80 dam thleng turin kum <strong>${yearsRemaining} i la mamawh a</strong>,<br> <strong> Kar (weeks) ${weeksRemaining} i la nei</strong>, Ni (days) <strong>${daysRemaining} </strong> I la nei e <p>
+          
+          <p>  A dam rei ang bera in chhut pawn khitiang zah khi a nia. <br><strong>SUAL HMAN I NI LO AW</strong>   <p>Kan dam chhûng nite chhiar dân tûr min zirtîr ang che,<br> Finna thinlung kan neih phah hialna tûrin.`;
+      } else {
+        document.getElementById("result").innerHTML = 
+          "Please enter a valid age between 0 and 80.";
+      }
+    }
+  </script>
+</body>
+</html>
