@@ -140,19 +140,29 @@
     <img src="hii.png" alt="Profile Picture">
   </div>
   <h1>Hringnun Calculator ni taps mai ma</h1>
-  <h4>Chakna vangin kum 80 dam thleng turah lo in ngai ta ang ila,<p>tuna I kum hman mek kha han chhu lut la,<p> I hun la neih zat han chhut teh le.</h4>
+  <h4>Chakna vangin kum 80 dam thleng turah lo in ngai ta ang ila,<br>tuna I kum hman mek kha han chhu lut la,<br> I hun la neih zat han chhut teh le.</h4>
   <div class="container">
     <label for="age">I kum zat chhu rawh le:</label>
     <input type="number" id="age" placeholder="i kum zat number in chhu la">
     <button onclick="calculateLife()">Calculate</button>
     <p id="result"></p>
   </div>
+  <p id="visitorCounter"></p>
 
   <script>
+    // Visitor counter logic
+    function updateVisitorCounter() {
+      let visitCount = localStorage.getItem('visitCount') || 0;
+      visitCount++;
+      localStorage.setItem('visitCount', visitCount);
+      document.getElementById('visitorCounter').innerText = `Visitor Count: ${visitCount}`;
+    }
+
+    // Life calculator logic
     function calculateLife() {
       const age = parseInt(document.getElementById("age").value);
       const lifespan = 80;
-      const totalDays = lifespan * 365; // Assuming 365 days per year
+      const totalDays = lifespan * 365;
       const daysLived = age * 365;
       const daysRemaining = totalDays - daysLived;
       const yearsRemaining = Math.floor(daysRemaining / 365);
@@ -168,6 +178,9 @@
           "Please enter a valid age between 0 and 80.";
       }
     }
+
+    // Initialize visitor counter on page load
+    updateVisitorCounter();
   </script>
 </body>
 </html>
